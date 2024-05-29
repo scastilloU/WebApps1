@@ -1,23 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width initial-scale=1.0">
-        <title>My website</title>
-        <link rel="stylesheet" href="Styles.css">
-    </head>
+<html>
+<head>
+    <title>Saludo</title>
+</head>
 <body>
-    <div class="grid"> <!-- clase padre -->
-        <!-- clases hijas  heredando todo el funcionamiento grid -->
-        <header class="header">Header</header>
-        <nav class="menu">Menu</nav>
-        <footer class="hero">Portada</footer>
-        <main class="main">Articulos</main>
-        <aside class="banner">Banner</aside>
-        <section class="extra">Extra</section>
-        <article class="image">Image</article>
-    </div>
-    <script src="script.js"></script>
-</body>
+    <!-- Div para mostrar el saludo -->
+    <div id="output"></div>
+    <!-- Div para mostrar información del carro -->
+    <div id="cars"></div>
+    <!-- Div para mostrar el resultado de la operación matemática -->
+    <div id="result"></div>
+    
+    <script>
+        // Solicita el nombre del usuario
+        var nombre = prompt("Dame tu nombre");
+        // Solicita la edad del usuario
+        var edad = prompt("Dame tu edad");
 
+        // Función para crear un mensaje de saludo
+        function saludar(n, e) {
+            // Usando la sintaxis de plantilla de cadena (template string)
+            var mensaje = `Hola, me llamo ${n} y tengo ${e} años.`;
+
+            // Retorna el mensaje de saludo
+            return mensaje;
+        }
+
+        // Obtener el elemento div con id "output"
+        var outputDiv = document.getElementById("output");
+
+        // Llamar a la función saludar y asignar el resultado al contenido del div
+        outputDiv.innerHTML = saludar(nombre, edad);
+
+        // Crear un objeto llamado car con 4 atributos
+        const car = {
+            name: "BMW",
+            modelo: "BMW Serie 2 Active Tourer.",
+            color: "Black",
+            año: "2009"
+        };
+
+        // Obtener el elemento div con id "cars"
+        var carsDiv = document.getElementById("cars");
+
+        // Asignar el contenido del div con id "cars" con los detalles del objeto car
+        carsDiv.innerHTML = `El ${car.name} tiene las siguientes características: Modelo: ${car.modelo} - Color: ${car.color}`;
+
+        // Crear un objeto llamado carro con 3 atributos
+        const carro = {
+            marca: "BMW",
+            modelo: "ix1",
+            color: "Negro"
+        };
+
+        // Crear un objeto llamado moto con 2 atributos
+        const moto = {
+            marca: "Yamaha",
+            color: "Blanco"
+        };
+
+        // Obtener el elemento div con id "cars"
+        var carDiv = document.getElementById("cars");
+        // Obtener el elemento div con id "moto"
+        var motocicleta = document.getElementById("moto");
+
+        // Crear mensajes con detalles de carro y moto usando template strings
+        var msj = `El ${carro.marca} es de modelo: ${carro.modelo}, y entre sus características, el color es ${carro.color}`;
+        var msj2 = `La moto es <a href='#'>${moto.marca}</a> y su color es ${moto.color}`;
+
+        // Asignar los mensajes a los divs correspondientes
+        carDiv.innerHTML = msj;
+        motocicleta.innerHTML = msj2;
+
+        // Solicita la operación que el usuario desea realizar
+        var operacion = prompt("¿Qué operación quiere hacer? (+,-,/,*)");
+        // Solicita el primer número para la operación
+        var num1 = prompt("Ingrese un número");
+        // Solicita el segundo número para la operación
+        var num2 = prompt("Ingrese el segundo número");
+
+        // Variable para almacenar el resultado de la operación
+        var resultado;
+
+        // Realiza la operación matemática según la selección del usuario
+        if (operacion == "+") {
+            resultado = sumar(num1, num2);
+        } else if (operacion == "-") {
+            resultado = restar(num1, num2);
+        } else if (operacion == "*") {
+            resultado = multiplicar(num1, num2);
+        } else if (operacion == "/") {
+            resultado = dividir(num1, num2);
+        } else {
+            // Muestra un mensaje de error si la operación no es válida
+            alert("¡La información ingresada es incorrecta!");
+        }
+
+        // Función para sumar dos números
+        function sumar(n1, n2) {
+            var result = parseFloat(n1) + parseFloat(n2);
+            return result;
+        }
+
+        // Función para restar dos números
+        function restar(n1, n2) {
+            var result = parseFloat(n1) - parseFloat(n2);
+            return result;
+        }
+
+        // Función para multiplicar dos números
+        function multiplicar(n1, n2) {
+            var result = parseFloat(n1) * parseFloat(n2);
+            return result;
+        }
+
+        // Función para dividir dos números
+        function dividir(n1, n2) {
+            var result = parseFloat(n1) / parseFloat(n2);
+            return result;
+        }
+
+        // Obtener el elemento div con id "result"
+        var resultDiv = document.getElementById("result");
+        // Mostrar el resultado de la operación en el div
+        resultDiv.innerHTML = "El resultado es " + resultado;
+
+        // Crear un array de autos
+        const autos = ["Mazda", "BMW", "Honda"];
+        // Añadir un nuevo auto al array
+        autos.push("Hyundai");
+
+        // Mostrar una alerta con el contenido del array autos
+        alert(autos);
+
+    </script>
+</body>
 </html>
